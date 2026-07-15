@@ -18,6 +18,9 @@ public class RecordDemo {
         }
     }
 
+    // Record with multiple components - demonstrates records with several fields
+    record Address(String street, String city, String zipCode) {}
+
     public static void main(String[] args) {
         System.out.println("=== Java Records Demo ===\n");
 
@@ -62,5 +65,22 @@ public class RecordDemo {
             System.out.println("Caught expected exception: " + e.getMessage());
         }
         System.out.println();
+
+        // Record with Multiple Components Example
+        System.out.println("4. Record with Multiple Components (Address):");
+        Address address1 = new Address("123 Main St", "Springfield", "12345");
+        Address address2 = new Address("123 Main St", "Springfield", "12345");
+        Address address3 = new Address("456 Oak Ave", "Portland", "67890");
+
+        System.out.println("address1: " + address1);
+        System.out.println("address1.street(): " + address1.street());
+        System.out.println("address1.city(): " + address1.city());
+        System.out.println("address1.zipCode(): " + address1.zipCode());
+        System.out.println("address1.equals(address2): " + address1.equals(address2));
+        System.out.println("address1.equals(address3): " + address1.equals(address3));
+        System.out.println();
+
+        System.out.println("=== Records are Immutable ===");
+        System.out.println("Records cannot be modified after creation (no setters)");
     }
 }
