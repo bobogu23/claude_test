@@ -9,6 +9,15 @@ public class RecordDemo {
         }
     }
 
+    // Record with compact constructor - demonstrates validation in constructor
+    record Product(String name, double price) {
+        public Product {
+            if (price <= 0) {
+                throw new IllegalArgumentException("Price must be positive");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("=== Java Records Demo ===\n");
 
@@ -35,6 +44,23 @@ public class RecordDemo {
         System.out.println("circle1.radius(): " + circle1.radius());
         System.out.println("circle1.area(): " + circle1.area());
         System.out.println("circle1.equals(circle2): " + circle1.equals(circle2));
+        System.out.println();
+
+        // Record with Compact Constructor Example
+        System.out.println("3. Record with Compact Constructor (Product):");
+        Product product1 = new Product("Laptop", 999.99);
+        Product product2 = new Product("Laptop", 999.99);
+
+        System.out.println("product1: " + product1);
+        System.out.println("product1.name(): " + product1.name());
+        System.out.println("product1.price(): " + product1.price());
+        System.out.println("product1.equals(product2): " + product1.equals(product2));
+
+        try {
+            Product invalidProduct = new Product("Invalid", -10.0);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught expected exception: " + e.getMessage());
+        }
         System.out.println();
     }
 }
