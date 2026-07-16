@@ -1,0 +1,21 @@
+# Compiled Java files
+*.class
+
+# IDE
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+target/
+bin/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Internal
+.superpowers/
